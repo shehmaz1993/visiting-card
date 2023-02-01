@@ -45,9 +45,16 @@
       $(document).ready(function () {
            $("#myBtn").click(function(){
            var str = $("#str").val();
-           alert("hi1");
+           
              console.log(str);
-            var obj = JSON.parse(str);
+             if(str!=null){
+              var obj = JSON.parse(str);
+             }
+             else{
+              alert("No String");
+              
+             }
+           
             var $orders = $('#orders');
             var htm="",cmh="";
             
@@ -68,9 +75,10 @@
             +"<P>hasibreza@ditcl-dragonbd.com</P>"
             +"<P>Cell:+8801775228624</P>"
             +"</div>";
-            
-            htm=htm+'<div>'+item.Name+'</div>'+'<div>'+item.Designation+'</div>'+'<div>'+item.Phone+'</div>'+cmh;
-           
+             if(item.Designation=="Eng.")
+                     htm=htm+'<p style="color:red">'+item.Name+'</p>'+'<div>'+item.Designation+'</div>'+'<div>'+item.Phone+'</div>'+cmh;
+             else
+                   htm=htm+'<p>'+item.Name+'</p>'+'<div>'+item.Designation+'</div>'+'<div>'+item.Phone+'</div>'+cmh;
                console.log(htm);
             
             $("#card").append(htm);
