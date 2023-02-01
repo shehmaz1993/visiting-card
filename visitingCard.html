@@ -9,7 +9,7 @@
 </head>
 <body>
    
-      <div class="visiting_card" >
+      <div class="visiting_card" id="card" >
         <div >
             <input type="text" id="str" />
             <br/>
@@ -18,17 +18,12 @@
            <br/>
             <br/>
           </div>
-        <div class="visiting_card_content">
+    <!--    <div class="visiting_card_content">
             <h4 class="rotate_text">DRAGON</h4>
         <div style="text-align:end">
            <img src="./image/logo.png", class="logo">
         </div>
         <div ><span id="orders"></span></div>
-       <!-- <p><span id="name"></span></p>
-        <P><span id="designation"></span></P>
-        <P>harunAlRashid@ditcl-dragonbd.com</P>
-        <P><span id="phone"></span>(WhatsApp)</P>-->
-        <p><span id="clubInfo"></span></p>
         
         <div style="margin: top 15px">
             <h4>Dragon Information Technology and communication Limited</h4>
@@ -36,42 +31,12 @@
             <P>68/B,level-3,D I T Road,Malibagh Chowdhury Para, Dhaka-1219,Bangladesh</P>
             <P>hasibreza@ditcl-dragonbd.com</P>
             <P>Cell:+8801775228624</P>
-          </div>
+          </div>-->
         </div>
 
      </div>
 
-     <div class="visiting_card" >
-      <div >
-          <input type="text" id="str2" />
-          <br/>
-          
-         <button type="button" id="myBtn">Submit</button>
-         <br/>
-          <br/>
-        </div>
-      <div class="visiting_card_content">
-          <h4 class="rotate_text">DRAGON</h4>
-      <div style="text-align:end">
-         <img src="./image/logo.png", class="logo">
-      </div>
-      <div ><span id="orders"></span></div>
-     <!-- <p><span id="name"></span></p>
-      <P><span id="designation"></span></P>
-      <P>harunAlRashid@ditcl-dragonbd.com</P>
-      <P><span id="phone"></span>(WhatsApp)</P>-->
-      <p><span id="clubInfo"></span></p>
-      
-      <div style="margin: top 15px">
-          <h4>Dragon Information Technology and communication Limited</h4>
-          <p>Dragon Group OF Companies</p>
-          <P>68/B,level-3,D I T Road,Malibagh Chowdhury Para, Dhaka-1219,Bangladesh</P>
-          <P>hasibreza@ditcl-dragonbd.com</P>
-          <P>Cell:+8801775228624</P>
-        </div>
-      </div>
-
-   </div>
+     
           
      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
      <script>
@@ -79,14 +44,39 @@
       $(document).ready(function () {
            $("#myBtn").click(function(){
            var str = $("#str").val();
+           alert("hi1");
              console.log(str);
             var obj = JSON.parse(str);
             var $orders = $('#orders');
+            var htm="",cmh="";
+            
    
-           $(obj).each(function (index, item) {             
-               $orders.append('<div>'+item.Name+'</div>');
-               $orders.append('<div>'+item.Designation+'</div>');
-               $orders.append('<div>'+item.Phone+'</div>')
+           $(obj).each(function (index, item) {   
+            
+            htm=    "<div class='visiting_card_content'>"
+              +"   <h4 class='rotate_text'>DRAGON</h4>"
+              +" <div style='text-align:end'> "
+              + " <img src=''./image/logo.png', class='logo'>"
+               + "</div>"
+               + " <div ><span id='card'></span></div> <br />";
+        
+            cmh= " <div style='margin: top 15px'>"
+            +" <h4>Dragon Information Technology and communication Limited</h4>"
+            +"<p>Dragon Group OF Companies</p>"
+            +"<P>68/B,level-3,D I T Road,Malibagh Chowdhury Para, Dhaka-1219,Bangladesh</P>"
+            +"<P>hasibreza@ditcl-dragonbd.com</P>"
+            +"<P>Cell:+8801775228624</P>"
+            +"</div>";
+            
+            htm=htm+'<div>'+item.Name+'</div>'+'<div>'+item.Designation+'</div>'+'<div>'+item.Phone+'</div>'+cmh;
+           
+               console.log(htm);
+            
+            $("#card").append(htm);
+              
+             htm="";
+               
+
            });
            });
 
